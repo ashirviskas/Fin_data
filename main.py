@@ -4,12 +4,13 @@ import matplotlib.gridspec as gridspec
 
 while True:
     end = ""
-    print("Welcome to financial analysis. This project will help you to visualise financial data. You can choose to compare historical data over a number of accounting periods (horizontal analysis) or analyse single reporting period (vertical analysis)")
+    print(
+        "Welcome to financial analysis. This project will help you to visualise financial data. You can choose to compare historical data over a number of accounting periods (horizontal analysis) or analyse single reporting period (vertical analysis)")
     select_menu = int(input("Please enter 1 (vertical analysis) or 2 (horizontal analysis)"))
     if select_menu in [1, 2]:
         if select_menu == 1:
-        
-        #Objective-oriented programming
+
+            # Objective-oriented programming
             class Year1:
                 def __init__(self, rev, cogs, assets, liab, equity, net):
                     self.rev = input("Revenues")
@@ -49,17 +50,18 @@ while True:
                 def text(self):
                     print('Enter 4th period data')
 
-#under development. Target: to identify delta between values and diferiancate color of text according to output
-           # class Features:
-           #      def Delta_1_year(self, delta):
-           #          self.delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
-           #          return round(self.delta, 2)
-           #
-           #      def Color_change(self):
-           #          if self.delta < 0:
-           #              Colo = 'r'
-           #          elif self.delta > 0:
-           #              Colo = 'g'
+
+            # under development. Target: to identify delta between values and diferiancate color of text according to output
+            # class Features:
+            #      def Delta_1_year(self, delta):
+            #          self.delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
+            #          return round(self.delta, 2)
+            #
+            #      def Color_change(self):
+            #          if self.delta < 0:
+            #              Colo = 'r'
+            #          elif self.delta > 0:
+            #              Colo = 'g'
 
             while end not in ("Q", "q"):
                 print("Enter number of comparative periods\n 2 year\n 3 year\n 4 year")
@@ -71,19 +73,21 @@ while True:
                     year2 = Year2(1, 2, 3, 4, 5, 6)
 
                     while end not in ("Q", "q"):
-                        print("please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
+                        print(
+                            "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
                         select_H_2 = int(input("Please enter selection"))
                         if select_H_2 == 1:
                             def Delta_1_year():
                                 delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
                                 return round(delta, 2)
 
+
                             plt.style.use("bmh")  # revenue
                             x_axis = np.arange(1, 3)
                             labels = [int(year1.rev), int(year2.rev)]
                             plt.bar(x_axis, [int(x) for x in labels])
                             # plt.text(2, int(year2.rev) + .25, str(Delta_1_year()) + '%', color=Colo) 
-                            #Under development. Associated with Delta and Color_change f-tions.
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Revenue')
                             plt.xticks(x_axis, x_axis)
@@ -95,7 +99,7 @@ while True:
                             labels = [int(year1.cogs), int(year2.cogs)]
                             plt.bar(x_axis, [int(x) for x in labels])
                             # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                             #Under development. Associated with Delta and Color_change f-tions.
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Costs of goods')
                             plt.xticks(x_axis, x_axis)
@@ -107,7 +111,7 @@ while True:
                             labels = [int(year1.assets), int(year2.assets)]
                             plt.bar(x_axis, [int(x) for x in labels])
                             # plt.text(2, int(year2.assets) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            #Under development. Associated with Delta and Color_change f-tions.
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Assets')
                             plt.xticks(x_axis, x_axis)
@@ -118,8 +122,8 @@ while True:
                             x_axis = np.arange(1, 3)
                             labels = [int(year1.liab), int(year2.liab)]
                             plt.bar(x_axis, [int(x) for x in labels])
-                            #plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            #Under development. Associated with Delta and Color_change f-tions.
+                            # plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Liabilities')
                             plt.xticks(x_axis, x_axis)
@@ -131,7 +135,7 @@ while True:
                             labels = [int(year1.equity), int(year2.equity)]
                             plt.bar(x_axis, [int(x) for x in labels])
                             # plt.text(2, int(year2.equity) + .25, str(Delta_1_year()) + '%', color=Colo)
-                             #Under development. Associated with Delta and Color_change f-tions.
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Equity')
                             plt.xticks(x_axis, x_axis)
@@ -143,7 +147,7 @@ while True:
                             labels = [int(year1.net), int(year2.net)]
                             plt.bar(x_axis, [int(x) for x in labels])
                             # plt.text(2, int(year2.net) + .25, str(Delta_1_year()) + '%', color=Colo)
-                             #Under development. Associated with Delta and Color_change f-tions.
+                            # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Net income')
                             plt.xticks(x_axis, x_axis)
@@ -163,7 +167,8 @@ while True:
                     end = input("")
 
                     while end not in ("Q", "q"):
-                        print("please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
+                        print(
+                            "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
                         select_H_3 = int(input("Please enter selection"))
 
 
@@ -335,8 +340,8 @@ while True:
             else:
                 break
         elif select_menu == 2:
-        
-        #Functional programing
+
+            # Functional programing
             import functions
 
             # Under development. Target: differentiate colors regarding the value

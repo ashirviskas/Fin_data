@@ -20,5 +20,4 @@ canvas1.create_window(150, 150, window=browseButton_Excel)
 
 root.mainloop()
 
-#if choice == 3: # findata from web. Webscrapping (beautifulSoup): finance.yahoo, bloomberg (on progress) 
-
+# if choice == 3: # findata from web. Webscrapping (beautifulSoup): finance.yahoo, bloomberg (on progress)

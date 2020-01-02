@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
-
 print('Enter income statement information')
 rev = float(input("Enter revenues"))
 cogs = float(input("Enter costs of goods"))
@@ -18,6 +17,7 @@ t_payables = float(input("Enter trades payables"))
 short_liabl = float(input("Enter current liabilities"))
 tot_liabl = float(input("Enter total liabilities"))
 tot_equity = float(input("Enter total equity"))
+
 
 # ratios
 
