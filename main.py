@@ -2,6 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
+
+def input_attrs(initial_string):
+    print(initial_string)
+    rev = input("Revenues")
+    cogs = input("Costs of goods")
+    assets = input("Total assets")
+    liab = input("Total liabilities")
+    equity = input("Equity")
+    net = input("Net income")
+    return rev, cogs, assets, liab, equity, net
+
+
 while True:
     end = ""
     print(
@@ -11,44 +23,14 @@ while True:
         if select_menu == 1:
 
             # Objective-oriented programming
-            class Year1:
+            class Year:
                 def __init__(self, rev, cogs, assets, liab, equity, net):
-                    self.rev = input("Revenues")
-                    self.cogs = input("Costs of goods")
-                    self.assets = input("Total assets")
-                    self.liab = input("Total liabilities")
-                    self.equity = input("Equity")
-                    self.net = input("Net income")
-
-                def text(self):
-                    print('Enter first period data')
-
-
-            class Year2(Year1):
-
-                def __init__(self, rev, cogs, asetss, liab, equity, net):
-                    super().__init__(rev, cogs, asetss, liab, equity, net)
-
-                def text(self):
-                    print('Enter second period data')
-
-
-            class Year3(Year1):
-
-                def __init__(self, rev, cogs, assets, liab, equity, net):
-                    super().__init__(rev, cogs, assets, liab, equity, net)
-
-                def text(self):
-                    print('Enter third period data')
-
-
-            class Year4(Year1):
-
-                def __init__(self, rev, cogs, assets, liab, equity, net):
-                    super().__init__(rev, cogs, assets, liab, equity, net)
-
-                def text(self):
-                    print('Enter 4th period data')
+                    self.rev = rev
+                    self.cogs = cogs
+                    self.assets = assets
+                    self.liab = liab
+                    self.equity = equity
+                    self.net = net
 
 
             # under development. Target: to identify delta between values and diferiancate color of text according to output
@@ -67,10 +49,10 @@ while True:
                 print("Enter number of comparative periods\n 2 year\n 3 year\n 4 year")
                 select_H_Main = int(input("Please enter"))
                 if select_H_Main == 2:
-                    Year1.text()
-                    year1 = Year1(1, 2, 3, 4, 5, 6)
-                    Year2.text()
-                    year2 = Year2(1, 2, 3, 4, 5, 6)
+                    attrs = input_attrs('Enter first period data: ')
+                    year1 = Year(*attrs)
+                    attrs = input_attrs('Enter second period data: ')
+                    year2 = Year(*attrs)
 
                     while end not in ("Q", "q"):
                         print(
@@ -86,7 +68,7 @@ while True:
                             x_axis = np.arange(1, 3)
                             labels = [int(year1.rev), int(year2.rev)]
                             plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.rev) + .25, str(Delta_1_year()) + '%', color=Colo) 
+                            # plt.text(2, int(year2.rev) + .25, str(Delta_1_year()) + '%', color=Colo)
                             # Under development. Associated with Delta and Color_change f-tions.
                             plt.xlabel('Periods')
                             plt.ylabel('Revenue')
@@ -152,18 +134,18 @@ while True:
                             plt.ylabel('Net income')
                             plt.xticks(x_axis, x_axis)
                             plt.show()
-                        end = input("Press any key to go back. If you want to quit, please enter ""Q""")
+                        end = input('Press any key to go back. If you want to quit, please enter "Q"')
                     else:
                         break
 
                 if select_H_Main == 3:
 
-                    Year1.text()
-                    year1 = Year1(1, 2, 3, 4, 5, 6)
-                    Year2.text()
-                    year2 = Year2(1, 2, 3, 4, 5, 6)
-                    Year3.text()
-                    year3 = Year3(1, 2, 3, 4, 5, 6)
+                    attrs = input_attrs('Enter first period data: ')
+                    year1 = Year(*attrs)
+                    attrs = input_attrs('Enter second period data: ')
+                    year2 = Year(*attrs)
+                    attrs = input_attrs('Enter third period data: ')
+                    year3 = Year(*attrs)
                     end = input("")
 
                     while end not in ("Q", "q"):
@@ -247,14 +229,15 @@ while True:
                         break
 
                 if select_H_Main == 4:
-                    Year1.text()
-                    year1 = Year1(1, 2, 3, 4, 5, 6)
-                    Year2.text()
-                    year2 = Year2(1, 2, 3, 4, 5, 6)
-                    Year3.text()
-                    year3 = Year3(1, 2, 3, 4, 5, 6)
-                    Year4.text()
-                    year4 = Year4(1, 2, 3, 4, 5, 6)
+                    attrs = input_attrs('Enter first period data: ')
+                    year1 = Year(*attrs)
+                    attrs = input_attrs('Enter second period data: ')
+                    year2 = Year(*attrs)
+                    attrs = input_attrs('Enter third period data: ')
+                    year3 = Year(*attrs)
+                    attrs = input_attrs('Enter third period data: ')
+                    year4 = Year(*attrs)
+                    end = input("")
 
                     while end not in ("Q", "q"):
                         print(
