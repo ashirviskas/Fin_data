@@ -19,7 +19,7 @@ while True:
                     self.equity = input("Equity")
                     self.net = input("Net income")
 
-                def text():
+                def text(self):
                     print('Enter first period data')
 
 
@@ -28,7 +28,7 @@ while True:
                 def __init__(self, rev, cogs, asetss, liab, equity, net):
                     super().__init__(rev, cogs, asetss, liab, equity, net)
 
-                def text():
+                def text(self):
                     print('Enter second period data')
 
 
@@ -37,7 +37,7 @@ while True:
                 def __init__(self, rev, cogs, assets, liab, equity, net):
                     super().__init__(rev, cogs, assets, liab, equity, net)
 
-                def text():
+                def text(self):
                     print('Enter third period data')
 
 
@@ -46,21 +46,20 @@ while True:
                 def __init__(self, rev, cogs, assets, liab, equity, net):
                     super().__init__(rev, cogs, assets, liab, equity, net)
 
-                def text():
+                def text(self):
                     print('Enter 4th period data')
 
 #under development. Target: to identify delta between values and diferiancate color of text according to output
-```class Features:
-                def Delta_1_year(self, delta):
-                    self.delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
-                    return round(self.delta, 2)
-
-                def Color_change():
-                    if self.delta < 0:
-                        Colo = 'r'
-                    elif self.delta > 0:
-                        Colo = 'g'```
-
+           # class Features:
+           #      def Delta_1_year(self, delta):
+           #          self.delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
+           #          return round(self.delta, 2)
+           #
+           #      def Color_change(self):
+           #          if self.delta < 0:
+           #              Colo = 'r'
+           #          elif self.delta > 0:
+           #              Colo = 'g'
 
             while end not in ("Q", "q"):
                 print("Enter number of comparative periods\n 2 year\n 3 year\n 4 year")
