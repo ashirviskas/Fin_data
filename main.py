@@ -14,6 +14,11 @@ def input_attrs(initial_string):
     return rev, cogs, assets, liab, equity, net
 
 
+def delta_1_year(year_1, year_2):
+    delta = (int(year_2.rev) - int(year_1.rev)) / int(year_1.rev) * 100
+    return round(delta, 2)
+
+
 while True:
     end = ""
     print(
@@ -46,280 +51,95 @@ while True:
             #              Colo = 'g'
 
             while end not in ("Q", "q"):
-                print("Enter number of comparative periods\n 2 year\n 3 year\n 4 year")
-                select_H_Main = int(input("Please enter"))
-                if select_H_Main == 2:
-                    attrs = input_attrs('Enter first period data: ')
-                    year1 = Year(*attrs)
-                    attrs = input_attrs('Enter second period data: ')
-                    year2 = Year(*attrs)
+                select_H_Main = int(input("Enter number of comparative periods\n 2 year\n 3 year\n 4 year: "))
+                years = []
+                for year_id in range(select_H_Main):
+                    attrs = input_attrs('Enter ' + str(year_id) + ' period data: ')
+                    year = Year(*attrs)
+                    years.append(year)
 
-                    while end not in ("Q", "q"):
-                        print(
-                            "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
-                        select_H_2 = int(input("Please enter selection"))
-                        if select_H_2 == 1:
-                            def Delta_1_year():
-                                delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
-                                return round(delta, 2)
+                while end not in ("Q", "q"):
+                    print(
+                        "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
+                    select_H_2 = int(input("Please enter selection"))
+                    if select_H_2 == 1:
 
 
-                            plt.style.use("bmh")  # revenue
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.rev), int(year2.rev)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.rev) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Revenue')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
 
-                        if select_H_2 == 2:  # cogs
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.cogs), int(year2.cogs)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Costs of goods')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
+                        plt.style.use("bmh")  # revenue
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].rev), int(years[1].rev)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.rev) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Revenue')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
 
-                        if select_H_2 == 3:  # assets
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.assets), int(year2.assets)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.assets) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Assets')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
+                    if select_H_2 == 2:  # cogs
+                        plt.style.use("bmh")
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].cogs), int(years[1].cogs)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Costs of goods')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
 
-                        if select_H_2 == 4:  # liabilities
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.liab), int(year2.liab)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Liabilities')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
+                    if select_H_2 == 3:  # assets
+                        plt.style.use("bmh")
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].assets), int(years[1].assets)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.assets) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Assets')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
 
-                        if select_H_2 == 5:  # equity
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.equity), int(year2.equity)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.equity) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Equity')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
+                    if select_H_2 == 4:  # liabilities
+                        plt.style.use("bmh")
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].liab), int(years[1].liab)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Liabilities')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
 
-                        if select_H_2 == 6:  # income
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 3)
-                            labels = [int(year1.net), int(year2.net)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.net) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            # Under development. Associated with Delta and Color_change f-tions.
-                            plt.xlabel('Periods')
-                            plt.ylabel('Net income')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-                        end = input('Press any key to go back. If you want to quit, please enter "Q"')
-                    else:
-                        break
+                    if select_H_2 == 5:  # equity
+                        plt.style.use("bmh")
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].equity), int(years[1].equity)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.equity) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Equity')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
 
-                if select_H_Main == 3:
+                    if select_H_2 == 6:  # income
+                        plt.style.use("bmh")
+                        x_axis = np.arange(1, 3)
+                        labels = [int(years[0].net), int(years[1].net)]
+                        plt.bar(x_axis, [int(x) for x in labels])
+                        # plt.text(2, int(year2.net) + .25, str(Delta_1_year()) + '%', color=Colo)
+                        # Under development. Associated with Delta and Color_change f-tions.
+                        plt.xlabel('Periods')
+                        plt.ylabel('Net income')
+                        plt.xticks(x_axis, x_axis)
+                        plt.show()
+                    end = input('Press any key to go back. If you want to quit, please enter "Q"')
+                else:
+                    break
 
-                    attrs = input_attrs('Enter first period data: ')
-                    year1 = Year(*attrs)
-                    attrs = input_attrs('Enter second period data: ')
-                    year2 = Year(*attrs)
-                    attrs = input_attrs('Enter third period data: ')
-                    year3 = Year(*attrs)
-                    end = input("")
-
-                    while end not in ("Q", "q"):
-                        print(
-                            "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
-                        select_H_3 = int(input("Please enter selection"))
-
-
-                        def Delta_2_year():
-                            delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
-                            return round(delta, 2)
-
-
-                        if select_H_3 == 1:  # revenues
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.rev), int(year2.rev), int(year3.rev)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Revenue')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_3 == 2:  # cogs
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.cogs), int(year2.cogs)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Costs of goods')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_3 == 3:  # assets
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.assets), int(year2.assets), int(year3.assets)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Assets')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_3 == 4:  # liabilities
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.liab), int(year2.liab), int(year3.liab), int(year4.liab)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Liabilities')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_3 == 5:  # equity
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.equity), int(year2.equity), int(year3.equity), int(year4.equity)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.equity) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Equity')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_3 == 6:  # income
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 4)
-                            labels = [int(year1.net), int(year2.net), int(year3.net), int(year4.net)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.assets) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Net income')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-                        end = input("Press any key to go back. If you want to quit, please enter ""Q""")
-                    else:
-                        break
-
-                if select_H_Main == 4:
-                    attrs = input_attrs('Enter first period data: ')
-                    year1 = Year(*attrs)
-                    attrs = input_attrs('Enter second period data: ')
-                    year2 = Year(*attrs)
-                    attrs = input_attrs('Enter third period data: ')
-                    year3 = Year(*attrs)
-                    attrs = input_attrs('Enter third period data: ')
-                    year4 = Year(*attrs)
-                    end = input("")
-
-                    while end not in ("Q", "q"):
-                        print(
-                            "please select\n 1 - revenues\n 2 - cogs\n 3 - assets\n 4 - liabilities\n 5 - equity\n 6 - net income")
-                        select_H_4 = int(input("Please enter selection"))
-
-
-                        def Delta_2_year():
-                            delta = (int(year2.rev) - int(year1.rev)) / int(year1.rev) * 100
-                            return round(delta, 2)
-
-
-                        if select_H_4 == 1:  # revenues
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.rev), int(year2.rev), int(year3.rev), int(year4.rev)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Revenue')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_4 == 2:  # cogs
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.cogs), int(year2.cogs), int(year3.cogs), int(year4.cogs)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Costs of goods')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_4 == 3:  # assets
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.assets), int(year2.assets), int(year3.assets), int(year4.assets)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.liab) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Assets')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_4 == 4:  # liabilities
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.liab), int(year2.liab), int(year3.liab), int(year4.liab)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.cogs) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Liabilities')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_4 == 5:  # equity
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.equity), int(year2.equity), int(year3.equity), int(year4.equity)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.equity) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Equity')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-
-                        if select_H_4 == 6:  # income
-                            plt.style.use("bmh")
-                            x_axis = np.arange(1, 5)
-                            labels = [int(year1.net), int(year2.net), int(year3.net), int(year4.net)]
-                            plt.bar(x_axis, [int(x) for x in labels])
-                            # plt.text(2, int(year2.assets) + .25, str(Delta_1_year()) + '%', color=Colo)
-                            plt.xlabel('Periods')
-                            plt.ylabel('Net income')
-                            plt.xticks(x_axis, x_axis)
-                            plt.show()
-                        end = input("Press any key to go back. If you want to quit, please enter ""Q""")
-                    else:
-                        break
-
-                end = input("Press any key to go back. If you want to quit, please enter ""Q""")
             else:
                 break
         elif select_menu == 2:
