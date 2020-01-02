@@ -1,4 +1,3 @@
-import functions
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -80,6 +79,7 @@ def vertical_analysis():
 
 
 def horizontal_analysis():
+    import functions
     # Under development. Target: differentiate colors regarding the value
     # def Second_color():
     #     if roe_percetange() or operating_profit_percetenge() or roa_percentage() < 5:
