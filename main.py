@@ -3,6 +3,17 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
 
+# Objective-oriented programming
+class Year:
+    def __init__(self, rev, cogs, assets, liab, equity, net):
+        self.rev = rev
+        self.cogs = cogs
+        self.assets = assets
+        self.liab = liab
+        self.equity = equity
+        self.net = net
+
+
 def input_attrs(initial_string):
     print(initial_string)
     rev = input("Revenues")
@@ -41,17 +52,6 @@ def main_loop():
         select_menu = int(input("Please enter 1 (vertical analysis) or 2 (horizontal analysis)"))
         if select_menu in [1, 2]:
             if select_menu == 1:
-
-                # Objective-oriented programming
-                class Year:
-                    def __init__(self, rev, cogs, assets, liab, equity, net):
-                        self.rev = rev
-                        self.cogs = cogs
-                        self.assets = assets
-                        self.liab = liab
-                        self.equity = equity
-                        self.net = net
-
 
                 # under development. Target: to identify delta between values and diferiancate color of text according to output
                 # class Features:
@@ -106,18 +106,20 @@ def main_loop():
                 import functions
 
                 # Under development. Target: differentiate colors regarding the value
-                '''def Second_color():
-                    if roe_percetange() or operating_profit_percetenge() or roa_percentage() < 5:
-                        return "red"
-                    elif roe_percetange or operating_profit_percetenge() or roa_percentage() > 5 and roe_percetange or operating_profit_percetenge() or roa_percentage() < 10:
-                        return "yellow"
-                    else:
-                        return "green"
-                pie_chart_colors = ['white', Second_color()]'''
+                # def Second_color():
+                #     if roe_percetange() or operating_profit_percetenge() or roa_percentage() < 5:
+                #         return "red"
+                #     elif roe_percetange or operating_profit_percetenge() or roa_percentage() > 5 and
+                #     roe_percetange or operating_profit_percetenge() or roa_percentage() < 10:
+                #         return "yellow"
+                #     else:
+                #         return "green"
+                # pie_chart_colors = ['white', Second_color()]
 
                 while end not in ("Q", "q"):
                     print(
-                        "please select pics\n 1 - current ratio analysis\n 2 - capital structure\n 3 - cash conversion\n 4 - profitability")
+                        "please select pics\n 1 - current ratio analysis\n 2 - capital structure\n "
+                        "3 - cash conversion\n 4 - profitability")
                     select_h_main = int(input("Please enter selection"))
                     if select_h_main == 1:
                         functions.current_ratio_pic()
@@ -127,11 +129,12 @@ def main_loop():
                         functions.cash_conversion_cycle()
                     if select_h_main == 4:
                         functions.profitability()
-                    end = input("Enter ""Q"" if you wat to go back.\n Enter any key to select other option")
+                    end = input('Enter "Q" if you wat to go back.\n Enter any key to select other option')
                     if end in ('Q', 'q'):
                         break
             else:
                 print("Wrong choice")
+
 
 if __name__ == '__main__':
     main_loop()
